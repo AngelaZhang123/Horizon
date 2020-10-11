@@ -55,18 +55,20 @@ public class Quiz extends JPanel implements ActionListener{
         top.add(two);
 
         q2 = new JLabel("");
-        q2.setFont(font);
+        q2.setFont(smallF);
         bottom.add(q2);
         q2.setVisible(false);
 
         q2a = new JLabel("");
-        q2a.setFont(font);
+        q2a.setFont(smallF);
         bottom.add(q2a);
         q2a.setVisible(false);
 
         agree = new JButton("Agree");
         disagree = new JButton("Disagree");
 
+        agree.addActionListener(this);
+        disagree.addActionListener(this);
         bottom.add(agree);
         bottom.add(disagree);
         agree.setFont(font);
@@ -97,18 +99,26 @@ public class Quiz extends JPanel implements ActionListener{
         }
         if(command.equals("Education")) {
             topic = 2;
-            q2.setText("The public education system is flawed ");
-            q2a.setText("and should be defunded.");
+            q2.setFont(new Font("Monospaced", Font.PLAIN, 25));
+            q2a.setFont(new Font("Monospaced", Font.PLAIN, 25));
+            q2.setText("The public education system is ");
+            q2a.setText("flawed and should be defunded.");
             q2.setVisible(true);
             q2a.setVisible(true);
             agree.setVisible(true);
             disagree.setVisible(true);
             repaint();
         }
-        if(command.equals("Submit"))
+        if(command.equals("Agree"))
         {
-            if(topic==1)lay.show(cards,"EconomyP");
-            else lay.show(cards,"ImmigrationP");
+            System.out.println("HOHO");
+            if(topic==1)lay.show(cards,"EconomyA");
+            else lay.show(cards,"EducationA");
+        }
+        if(command.equals("Disagree"))
+        {
+            if(topic==1)lay.show(cards,"EconomyD");
+            else lay.show(cards,"EducationD");
         }
     }
 }

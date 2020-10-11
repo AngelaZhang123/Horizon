@@ -8,8 +8,10 @@ class Panels extends JPanel //where all the panels are created
 
     final static String MMPANEL = "MainMenu";
     final static String QPANEL = "QuizPanel";
-    final static String EPANEL = "EconomyP";
-    final static String IPANEL = "ImmigrationP";
+    final static String EPANEL = "EconomyA";
+    final static String DPANEL = "EducationA";
+    final static String EPANELD = "EconomyD";
+    final static String DPANELD = "EducationD";
 
     public Panels() //things are initialized here
     {
@@ -28,11 +30,15 @@ class Panels extends JPanel //where all the panels are created
         MainMenu mm = new MainMenu(lay,cards);
         Quiz qq = new Quiz(lay,cards);
         Econ ee = new Econ(lay,cards);
-        Imm ii = new Imm(lay,cards);
+        Edu ii = new Edu(lay,cards);
+        EconD ec = new EconD(lay,cards);
+        EduD ed = new EduD(lay,cards);
 
         cards.add(mm,MMPANEL);
         cards.add(qq,QPANEL);
         cards.add(ee,EPANEL);
-        cards.add(ii,IPANEL);
+        cards.add(ii,DPANEL);
+        cards.add(ec,EPANELD);
+        cards.add(ed,DPANELD);
     }
 }
