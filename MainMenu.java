@@ -38,16 +38,15 @@ public class MainMenu extends JPanel implements ActionListener{
         g.setColor(Color.WHITE);//name of program
         g.setFont(new Font("Monospaced",Font.BOLD,80));
         g.drawString("Horizon",145,225);
-        g.setFont(new Font("Monospaced",Font.PLAIN,30));
-        g.drawString("brief desc",145,305);
+        g.setFont(new Font("Monospaced",Font.PLAIN,20));
+        g.drawString("going beyond the horizon",145,305);
+        g.drawString("learning about the other side",135,335);
     }
-    public void actionPerformed(ActionEvent e)
-    {
-        if(e.getActionCommand().equals("Learn more"))
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("Learn more"))
             lay.show(cards, "QuizPanel");
-        if(e.getActionCommand().equals("Discussion")) {
+        if (e.getActionCommand().equals("Discussion")) {
             lay.show(cards, "FirstPost");
         }
     }
-
 }
