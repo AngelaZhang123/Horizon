@@ -6,6 +6,8 @@ class Panels extends JPanel //where all the panels are created
     JPanel cards;
     CardLayout lay;
 
+    final static String MMPANEL = "MainMenu";
+    final static String QPANEL = "QuizPanel";
     public Panels() //things are initialized here
     {
         lay = new CardLayout();
@@ -20,6 +22,9 @@ class Panels extends JPanel //where all the panels are created
 
     public void create() //the instances of the cards/panels are created and added to the cards
     {
-
+        MainMenu mm = new MainMenu();
+        Quiz qq = new Quiz();
+        cards.add(mm,MMPANEL);
+        cards.add(qq,QPANEL);
     }
 }
