@@ -14,18 +14,26 @@ public class MainMenu extends JPanel implements ActionListener{
         lay=x;
         cards=y;
 
-        JButton quizB = new JButton("Take the quiz");
+        JButton quizB = new JButton("Start");
         quizB.addActionListener(this);
         quizB.setFont(new Font("Monospaced", Font.PLAIN, 30));
 
         setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         quizB.setAlignmentX(Component.CENTER_ALIGNMENT);
-        add(Box.createRigidArea(new Dimension(0,500)));
+        add(Box.createRigidArea(new Dimension(0,400)));
         add(quizB);
     }
     public void paintComponent(Graphics g) //the graphics for Main menu (the background pic)
     {
         super.paintComponent(g);
+        Image nature = new ImageIcon("horizon.jpg").getImage();
+        g.drawImage(nature,0,0,600,600,null);
+
+        g.setColor(Color.WHITE);//name of program
+        g.setFont(new Font("Monospaced",Font.BOLD,80));
+        g.drawString("Horizon",145,225);
+        g.setFont(new Font("Monospaced",Font.PLAIN,30));
+        g.drawString("brief desc",145,305);
 
     }
     public void actionPerformed(ActionEvent e)
