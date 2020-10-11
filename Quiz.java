@@ -5,36 +5,48 @@ import java.io.FileWriter; import java.io.PrintWriter;
 import java.io.File; import java.io.FileNotFoundException;
 import java.io.IOException;import java.util.Scanner;
 
-public class Quiz extends JPanel{
-    public Quiz()
+public class Quiz extends JPanel implements ActionListener{
+    CardLayout lay;
+    JPanel cards;
+    boolean topic;
+
+    public Quiz(CardLayout x, JPanel y)
     {
-        JTextField txtInput = new JTextField("Quiz");
+        lay =x;
+        cards=y;
+
+        JTextField txtInput = new JTextField("Which topic would you like to explore?");
         add(txtInput);
-        JButton one = new JButton("Option 1");
-        JButton two = new JButton("Option 2");
-        JButton three = new JButton("Option 3");
-        JButton four = new JButton("Option 4");
+        JButton one = new JButton("Economy");
+        JButton two = new JButton("Immigration");
+        JButton submit = new JButton("Submit");
 
-
-        OneHandler oH = new OneHandler();
-        one.addActionListener(oH);
+        one.addActionListener(this);
         one.setFont(new Font("Monospaced", Font.PLAIN, 30));
         add(one);
-        TwoHandler tH = new TwoHandler();
-        two.addActionListener(tH);
+        two.addActionListener(this);
         two.setFont(new Font("Monospaced", Font.PLAIN, 30));
         add(two);
-        ThreeHandler threeH = new ThreeHandler();
-        three.addActionListener(threeH);
-        three.setFont(new Font("Monospaced", Font.PLAIN, 30));
-        add(three);
-        FourHandler fH = new FourHandler();
-        four.addActionListener(fH);
-        four.setFont(new Font("Monospaced", Font.PLAIN, 30));
-        add(four);
+        submit.addActionListener(this);
+        submit.setFont(new Font("Monospaced", Font.PLAIN, 30));
+        add(submit);
     }
     public void paintComponent(Graphics g) //the graphics for Main menu (the background pic)
     {
         super.paintComponent(g);
+
+    }
+    public void actionPerformed(ActionEvent e)
+    {
+        String command = e.getActionCommand();
+        if(command.equals("Economy"))
+            topic=true;
+        if(command.equals("Immigration"))
+            topic=false;
+        if(command.equals("Submit"))
+        {
+            if(topic)lay.show(cards,"EconomyP");
+            else lay.show(cards,"ImmigrationP");
+        }
     }
 }
