@@ -8,101 +8,55 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class Write extends JPanel implements ActionListener //Panel for entering your name
+public class Post extends JPanel implements ActionListener //Panel for entering your name
 {
-    JPanel post;
-    JTextField txtInput;
     CardLayout lay;
     JPanel cards;
     PrintWriter pw;
     Scanner input;
     JTextArea whole;
-    String text;
-
-    public Write(CardLayout x, JPanel y)//initialize stuff here
+    public Post(CardLayout x, JPanel y)//initialize stuff here
     {
-        input=null;
-        pw=null;
-        text="";
-
-        post = new JPanel();
         lay=x;
         cards=y;
-        setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-        txtInput = new JTextField("");
-        txtInput.setAlignmentX(Component.CENTER_ALIGNMENT);
-        txtInput.setFont(new Font("Monospaced",Font.PLAIN,20));
-        txtInput.setColumns(5);
-
-        Font font = new Font("Monospaced",Font.BOLD,30);
-
-        JButton done = new JButton("Done");
-        done.setFont(font);
-        done.addActionListener(this);
-        done.setAlignmentX(Component.CENTER_ALIGNMENT);
-        add(Box.createRigidArea(new Dimension(0,200)));
-        add(txtInput);
-
-        add(done);
-        add(Box.createRigidArea(new Dimension(0,200)));
-    }
-    public void paintComponent(Graphics g)//create the graphics (just the words)
-    {
-        super.paintComponent(g);
-        setBackground(new Color(255,204,51));
-        g.setFont(new Font("Monospaced",Font.PLAIN,30));
-        g.drawString("Discussion topic: Economy",40,70);
-        g.setFont(new Font("Monospaced",Font.PLAIN,30));
-        g.drawString("Add a post to the discussion!",40,100);
-        g.setFont(new Font("Monospaced",Font.PLAIN,20));
-        g.drawString("In clicking submit, I agree that my post will",20,150);
-        g.drawString("be meaningful, won't attack another person's",20,170);
-        g.drawString("beliefs, and will harbor peaceful discussions.",20,190);
-    }
-    public void actionPerformed(ActionEvent event)
-    {
-        if(event.getActionCommand().equals("Done"))
-        {
-            text=txtInput.getText();
-            run();
-            lay.show(cards,"PostBoard");
-        }
-        if(event.getActionCommand().equals("Back to main menu"))
-        {
-            lay.show(cards,"MainMenu");
-        }
-    }
-
-    public void run()
-    {
-        post.setLayout(new BorderLayout());
+        input=null;
+        pw=null;
+        setLayout(new BorderLayout());
 
         JPanel south = new JPanel();
         south.setBackground(Color.BLACK);
-        post.add(south, BorderLayout.SOUTH);
+        add(south, BorderLayout.SOUTH);
 
         Font mono= new Font("Monospaced",Font.PLAIN,15);
         Font monoSmall = new Font("Monospaced",Font.PLAIN,20);
         Font monoBold = new Font("Monospaced",Font.BOLD, 20);
 
-        JButton mainB = new JButton("Back to main menu");
+        JButton mainB = new JButton("Post");
         mainB.addActionListener( this );
         mainB.setFont(monoSmall);
         south.add(mainB);
 
         JLabel title = new JLabel(" Discussion Thread--Topic of the Day:Economy");
         title.setFont(monoBold);
-        post.add(title,BorderLayout.NORTH);
-        whole = new JTextArea(runIt(text));
+        add(title,BorderLayout.NORTH);
+
+        whole = new JTextArea(runIt(""));
         whole.setFont(mono);
         whole.setBackground(new Color(255,204,51));
 
-        post.add(whole, BorderLayout.CENTER);
+        add(whole, BorderLayout.CENTER);
 
         JScrollPane scrollBar = new JScrollPane(whole,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        post.add(scrollBar, BorderLayout.CENTER);
-}
-
+        add(scrollBar, BorderLayout.CENTER);
+    }
+    public void paintComponent(Graphics g)//create the graphics (just the words)
+    {
+        super.paintComponent(g);
+    }
+    public void actionPerformed(ActionEvent event)
+    {
+        lay.show(cards,"WritePanel");
+    }
     public String runIt(String currI)//reading/writing to the textfile and returning the string with all the leaderboard info
     {
         String all="";
@@ -123,7 +77,7 @@ public class Write extends JPanel implements ActionListener //Panel for entering
             }
         }
         tryCatchWrite();
-        if(!text.equals("")) {
+        if(!currI.equals("")) {
             app += currI + "\nEND\n";
             all += ("Anonymous: " + currI + "\n");
         }
@@ -161,3 +115,4 @@ public class Write extends JPanel implements ActionListener //Panel for entering
         }
     }
 }
+

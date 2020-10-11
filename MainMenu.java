@@ -45,8 +45,9 @@ public class MainMenu extends JPanel implements ActionListener{
     {
         if(e.getActionCommand().equals("Learn more"))
             lay.show(cards, "QuizPanel");
-        if(e.getActionCommand().equals("Discussion"))
-            lay.show(cards, "WritePanel");
+        if(e.getActionCommand().equals("Discussion")) {
+            lay.show(cards, "FirstPost");
+        }
     }
 
 }

@@ -14,6 +14,7 @@ class Panels extends JPanel //where all the panels are created
     final static String DPANELD = "EducationD";
     final static String WPANEL = "WritePanel";
     final static String PPANEL = "PostBoard";
+    final static String FPANEL = "FirstPost";
 
     public Panels() //things are initialized here
     {
@@ -36,6 +37,7 @@ class Panels extends JPanel //where all the panels are created
         EconD ec = new EconD(lay,cards);
         EduD ed = new EduD(lay,cards);
         Write ww = new Write(lay,cards);
+        Post pp = new Post(lay,cards);
 
         cards.add(mm,MMPANEL);
         cards.add(qq,QPANEL);
@@ -45,5 +47,6 @@ class Panels extends JPanel //where all the panels are created
         cards.add(ed,DPANELD);
         cards.add(ww,WPANEL);
         cards.add(ww.post,PPANEL);
+        cards.add(pp,FPANEL);
     }
 }
