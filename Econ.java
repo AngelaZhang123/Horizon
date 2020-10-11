@@ -19,9 +19,16 @@ public class Econ extends JPanel implements ActionListener{
         setLayout(new BorderLayout());
         add(back,BorderLayout.SOUTH);
 
+        JPanel top = new JPanel();
+        add(top, BorderLayout.NORTH);
+
         JLabel title = new JLabel("ECONOMY");
-        title.setFont(new Font("Monospaced", Font.PLAIN, 80));
-        add(title,BorderLayout.NORTH);
+        title.setFont(new Font("Monospaced",Font.BOLD,50));
+        top.add(title);
+
+        JLabel sub = new JLabel("Learn more about a different perspective!");
+        sub.setFont(new Font("Monospaced",Font.PLAIN,10));
+        top.add(sub);
 
         String info = "Supply-side economics: increased production drives economic growth. \nThe factors of production are capital, labor, entrepreneurship, and land";
         info+="\nTax cuts on businesses/corps and deregulation (lower minimum wage, \nless regulation on workers’ benefits, anti-workers union(?)\n";
