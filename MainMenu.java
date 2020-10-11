@@ -20,7 +20,7 @@ public class MainMenu extends JPanel implements ActionListener{
 
         setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         quizB.setAlignmentX(Component.CENTER_ALIGNMENT);
-        add(Box.createRigidArea(new Dimension(0,200)));
+        add(Box.createRigidArea(new Dimension(0,500)));
         add(quizB);
     }
     public void paintComponent(Graphics g) //the graphics for Main menu (the background pic)
