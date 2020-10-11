@@ -18,7 +18,7 @@ public class Quiz extends JPanel implements ActionListener{
         JTextField txtInput = new JTextField("Which topic would you like to explore?");
         add(txtInput);
         JButton one = new JButton("Economy");
-        JButton two = new JButton("Immigration");
+        JButton two = new JButton("Education");
         JButton submit = new JButton("Submit");
 
         one.addActionListener(this);
@@ -41,12 +41,12 @@ public class Quiz extends JPanel implements ActionListener{
         String command = e.getActionCommand();
         if(command.equals("Economy"))
             topic=true;
-        if(command.equals("Immigration"))
+        if(command.equals("Education"))
             topic=false;
         if(command.equals("Submit"))
         {
             if(topic)lay.show(cards,"EconomyP");
-            else lay.show(cards,"ImmigrationP");
+            else lay.show(cards,"EducationP");
         }
     }
 }
