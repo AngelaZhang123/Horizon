@@ -22,9 +22,9 @@ class Panels extends JPanel //where all the panels are created
 
     public void create() //the instances of the cards/panels are created and added to the cards
     {
-        MainMenu mm = new MainMenu();
-        Quiz qq = new Quiz();
+        MainMenu mm = new MainMenu(lay,cards);
+        //Quiz qq = new Quiz();
         cards.add(mm,MMPANEL);
-        cards.add(qq,QPANEL);
+        //cards.add(qq,QPANEL);
     }
 }

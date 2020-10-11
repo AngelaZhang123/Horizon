@@ -5,13 +5,17 @@ import java.io.FileWriter; import java.io.PrintWriter;
 import java.io.File; import java.io.FileNotFoundException;
 import java.io.IOException;import java.util.Scanner;
 
-public class MainMenu extends JPanel{
+public class MainMenu extends JPanel implements ActionListener{
 
-    public MainMenu()
+    CardLayout lay;
+    JPanel cards;
+    public MainMenu(CardLayout x, JPanel y)
     {
+        lay=x;
+        cards=y;
+
         JButton quizB = new JButton("Take the quiz");
-        MainMenuHandler mmH = new MainMenuHandler();
-        quizB.addActionListener(mmH);
+        quizB.addActionListener(this);
         quizB.setFont(new Font("Monospaced", Font.PLAIN, 30));
 
         setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
@@ -24,6 +28,12 @@ public class MainMenu extends JPanel{
         super.paintComponent(g);
 
     }
+    public void actionPerformed(ActionEvent e)
+    {
+        System.out.println("Showing STARTPANEL");
 
+        lay.show(cards, "QuizPanel");
+        System.out.println("YOYO");
+    }
 
 }
