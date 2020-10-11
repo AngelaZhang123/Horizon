@@ -82,13 +82,14 @@ public class Quiz extends JPanel implements ActionListener{
     public void paintComponent(Graphics g) //the graphics for Main menu (the background pic)
     {
         super.paintComponent(g);
-
     }
     public void actionPerformed(ActionEvent e)
     {
         String command = e.getActionCommand();
         if(command.equals("Economy")) {
             topic = 1;
+            q2.setFont(new Font("Monospaced", Font.PLAIN, 20));
+            q2a.setFont(new Font("Monospaced", Font.PLAIN, 20));
             q2.setText("There should be more government regulations");
             q2a.setText("put on larger businesses and corporations.");
             q2.setVisible(true);
@@ -111,12 +112,17 @@ public class Quiz extends JPanel implements ActionListener{
         }
         if(command.equals("Agree"))
         {
-            System.out.println("HOHO");
+            q2.setVisible(false);
+            q2a.setVisible(false);
+            agree.setVisible(false);
+            disagree.setVisible(false);
+            repaint();
             if(topic==1)lay.show(cards,"EconomyA");
             else lay.show(cards,"EducationA");
         }
         if(command.equals("Disagree"))
         {
+
             if(topic==1)lay.show(cards,"EconomyD");
             else lay.show(cards,"EducationD");
         }
