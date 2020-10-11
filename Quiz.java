@@ -122,7 +122,11 @@ public class Quiz extends JPanel implements ActionListener{
         }
         if(command.equals("Disagree"))
         {
-
+            q2.setVisible(false);
+            q2a.setVisible(false);
+            agree.setVisible(false);
+            disagree.setVisible(false);
+            repaint();
             if(topic==1)lay.show(cards,"EconomyD");
             else lay.show(cards,"EducationD");
         }

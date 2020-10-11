@@ -50,6 +50,8 @@ public class Write extends JPanel implements ActionListener //Panel for entering
         super.paintComponent(g);
         setBackground(new Color(255,204,51));
         g.setFont(new Font("Monospaced",Font.PLAIN,30));
+        g.drawString("Discussion topic: Economy",40,70);
+        g.setFont(new Font("Monospaced",Font.PLAIN,30));
         g.drawString("Add a post to the discussion!",40,100);
         g.setFont(new Font("Monospaced",Font.PLAIN,20));
         g.drawString("In clicking submit, I agree that my post will",20,150);
