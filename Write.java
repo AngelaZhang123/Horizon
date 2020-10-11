@@ -17,6 +17,8 @@ public class Write extends JPanel implements ActionListener //Panel for entering
     PrintWriter pw;
     Scanner input;
     JTextArea whole;
+    String text;
+
     public Write(CardLayout x, JPanel y)//initialize stuff here
     {
         input=null;
@@ -49,11 +51,16 @@ public class Write extends JPanel implements ActionListener //Panel for entering
         setBackground(new Color(255,204,51));
         g.setFont(new Font("Monospaced",Font.PLAIN,30));
         g.drawString("Add a post to the discussion!",40,100);
+        g.setFont(new Font("Monospaced",Font.PLAIN,20));
+        g.drawString("In clicking submit, I agree that my post will",20,150);
+        g.drawString("be meaningful, won't attack another person's",20,170);
+        g.drawString("beliefs, and will harbor peaceful discussions.",20,190);
     }
     public void actionPerformed(ActionEvent event)
     {
         if(event.getActionCommand().equals("Done"))
         {
+            text=txtInput.getText();
             run();
             lay.show(cards,"PostBoard");
         }
@@ -62,10 +69,7 @@ public class Write extends JPanel implements ActionListener //Panel for entering
             lay.show(cards,"MainMenu");
         }
     }
-    public String getInput()
-    {
-        return txtInput.getText();
-    }
+
     public void run()
     {
         post.setLayout(new BorderLayout());
@@ -74,7 +78,7 @@ public class Write extends JPanel implements ActionListener //Panel for entering
         south.setBackground(Color.BLACK);
         post.add(south, BorderLayout.SOUTH);
 
-        Font mono= new Font("Monospaced",Font.PLAIN,50);
+        Font mono= new Font("Monospaced",Font.PLAIN,15);
         Font monoSmall = new Font("Monospaced",Font.PLAIN,20);
         Font monoBold = new Font("Monospaced",Font.BOLD, 20);
 
@@ -86,8 +90,8 @@ public class Write extends JPanel implements ActionListener //Panel for entering
         JLabel title = new JLabel(" Discussion Thread--Topic of the Day:Economy");
         title.setFont(monoBold);
         post.add(title,BorderLayout.NORTH);
-        whole = new JTextArea(runIt(txtInput.getText()));
-        whole.setFont(monoSmall);
+        whole = new JTextArea(runIt(text));
+        whole.setFont(mono);
         whole.setBackground(new Color(255,204,51));
 
         post.add(whole, BorderLayout.CENTER);
