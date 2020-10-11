@@ -13,9 +13,11 @@ public class Econ extends JPanel implements ActionListener{
     {
         lay =x;
         cards=y;
-        JTextField title = new JTextField("Economy");
-        add(title);
-
+        JButton back = new JButton("Back to main menu");
+        back.setFont(new Font("Monospaced", Font.PLAIN, 30));
+        back.addActionListener(this);
+        setLayout(new BorderLayout());
+        add(back,BorderLayout.SOUTH);
     }
     public void paintComponent(Graphics g) //the graphics for Main menu (the background pic)
     {
@@ -24,7 +26,7 @@ public class Econ extends JPanel implements ActionListener{
     }
     public void actionPerformed(ActionEvent e)
     {
-
+        lay.show(cards,"MainMenu");
     }
 }
 
